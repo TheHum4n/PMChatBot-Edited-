@@ -10,7 +10,7 @@ else:
     from config import Config
 
 
-@Client.on_message(filters.private & filters.user(Config.ADMIN) & filters.command(['bilgi']))
+@Client.on_message(filters.private & filters.user(Config.ADMIN) & filters.command(['info']))
 async def user_info(bot, message):
     reference_id = True
     if message.reply_to_message is not None:
