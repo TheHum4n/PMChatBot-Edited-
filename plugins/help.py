@@ -11,7 +11,7 @@ else:
 
 
 @Client.on_message(filters.private & filters.command(['help']))
-async def help_me(bot, message):
+async def help_me(*bot, message):
     if message.from_user.id == Config.ADMIN:
         return
     info = await bot.get_users(user_ids=message.from_user.id)
