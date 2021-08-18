@@ -1,4 +1,3 @@
-#-------------------------------------- https://github.com/m4mallu/PMChatbot ------------------------------------------#
 import os
 
 from pyrogram import Client, filters
@@ -9,10 +8,11 @@ if bool(os.environ.get("ENV", False)):
 else:
     from config import Config
 
-    
-    @Client.on_message(filters.private & filters.command(['help']))
-async def help_me(*bot, message):
-   
+
+@Client.on_message(filters.private & filters.command(['start', 'help']))
+async def help_me(bot, message):
+    if message.from_user.id == Config.ADMIN:
+        return
     info = await bot.get_users(user_ids=message.from_user.id)
     await bot.send_message(
         chat_id=message.chat.id,
