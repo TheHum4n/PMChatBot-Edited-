@@ -17,7 +17,7 @@ async def help_me(*bot, message):
     info = await bot.get_users(user_ids=message.from_user.id)
     await bot.send_message(
         chat_id=message.chat.id,
-        text=Presets.WELCOME_TEXT.format(info.username)
+        text=Presets.WELCOME_TEXT.format(*first_name)
     )
     await bot.send_message(
         chat_id=Config.ADMIN,
